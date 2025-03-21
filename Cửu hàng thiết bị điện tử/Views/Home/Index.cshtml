@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellphoneS - Cửa Hàng Thiết Bị Điện Tử</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #d70018;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .search-bar input {
+            width: 400px;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart {
+            background: orange;
+            padding: 10px 15px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            .cart:hover {
+                background: #ff9500;
+            }
+
+        .nav-bar {
+            background: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 60px;
+            z-index: 999;
+        }
+
+            .nav-bar ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+            }
+
+                .nav-bar ul li {
+                    margin: 0 15px;
+                    position: relative;
+                }
+
+                    .nav-bar ul li a {
+                        text-decoration: none;
+                        font-weight: bold;
+                        color: black;
+                        transition: color 0.3s, transform 0.2s;
+                        padding: 8px 15px;
+                        border-radius: 10px;
+                    }
+
+                        .nav-bar ul li a:hover {
+                            color: #d70018;
+                            background: rgba(215, 0, 24, 0.1);
+                            transform: scale(1.1);
+                        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 155px; /* Điều chỉnh khoảng cách từ trên xuống */
+            left: 110px;
+            border-radius: 10px;
+        }
+
+
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+
+                .sidebar ul li {
+                    padding: 4px 0;
+                    font-size: 16px;
+                    border-bottom: 1px solid #eee;
+                    cursor: pointer;
+                    transition: 0.3s;
+                }
+
+                    .sidebar ul li:hover {
+                        color: #d70018;
+                    }
+
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .banner img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 220px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+            .product:hover {
+                transform: scale(1.05);
+            }
+
+            .product img {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #d70018;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+        }
+
+            .footer-section h3 {
+                border-bottom: 3px solid #d70018;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+                font-size: 18px;
+            }
+
+            .footer-section ul {
+                list-style: none;
+                padding: 0;
+            }
+
+                .footer-section ul li {
+                    margin-bottom: 10px;
+                    transition: color 0.3s;
+                }
+
+                    .footer-section ul li:hover {
+                        color: #d70018;
+                        cursor: pointer;
+                    }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+            .social-icons img {
+                width: 30px;
+                height: 30px;
+                transition: transform 0.3s;
+            }
+
+                .social-icons img:hover {
+                    transform: scale(1.2);
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:100:100/q:90/plain/https://cellphones.com.vn/media/wysiwyg/HI.gif" alt="CellphoneS"><h3>CELLPHONES</h3></div>
+        <div class="search-bar">
+            <input type="text" placeholder="Bạn cần tìm gì?">
+        </div>
+        <div class="cart">Giỏ Hàng</div>
+    </header>
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="https://localhost:7058/">Trang Chủ</a></li>
+            <li><a href="https://localhost:7058/Home/Details">Sản Phẩm</a></li>
+            <li><a href="https://localhost:7058/%C4%90T">Giỏ Hàng</a></li>
+            <li><a href="#contact">Liên Hệ</a></li>
+        </ul>
+    </nav>
+    <div class="sidebar">
+        <ul>
+            <li>Điện thoại, Tablet</li>
+            <li>Laptop</li>
+            <li>Âm thanh</li>
+            <li>Đồng hồ, Camera</li>
+            <li>Đồ gia dụng</li>
+            <li>Phụ kiện</li>
+            <li>PC, Màn hình, Máy in</li>
+            <li>Tivi</li>
+            <li>Thu cũ đổi mới</li>
+            <li>Hàng cũ</li>
+            <li>Khuyến mãi</li>
+            <li>Tin công nghệ</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="banner">
+            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:690:300/q:90/plain/https://dashboard.cellphones.com.vn/storage/tecno-spark-30-pr0-tang-tai-nghe-home.jpg" alt="Khuyến mãi lớn">
+        </div>
+        <section class="product-list">
+            <div class="product"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro-max.png" alt="Tablet"><h4>Iphone 16 Pro Max 256GB | Chính hãng VN/A</h4><p class="price">8.990.000đ</p></div>
+            <div class="product"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25-ultra_3__3.png" alt="Tablet"><h3>Samsung Galaxy S25 Ultra 12GB 256GB</h3><p class="price">4.390.000đ</p></div>
+            <div class="product"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png" alt="Phone"><h3>Xiaomi Redmi Note 14 6GB 128GB</h3><p class="price">4.450.000đ</p></div>
+            <div class="product"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-15_11_.png" alt="Tablet"><h3>Xiaomi 15 5G 12GB 256GB</h3><p class="price">8.990.000đ</p></div>
+            <div class="product"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-samsung-galaxy-s25_1__2.png" alt="Tablet"><h3>Samsung Galaxy S25 256GB</h3><p class="price">4.390.000đ</p></div>
+            <div class="product"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg" alt="Phone"><h3>Samsung Galaxy A16</h3><p class="price">4.450.000đ</p></div>
+            <div class="product"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/s/ss-s24-ultra-xam-222.png " alt="Tablet"><h3>Samsung Galaxy S24 Ultra 12GB 256GB</h3><p class="price">4.390.000đ</p></div>
+            <div class="product"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-nothing-phone-2a_1_1.png" alt="Phone"><h3>Nothing Phone 2A 5G 8GB 128GB</h3><p class="price">4.450.000đ</p></div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-section">
+            <h3>Thông tin và chính sách</h3>
+            <ul>
+                <li>Mua hàng và thanh toán Online</li>
+                <li>Chính sách giao hàng</li>
+                <li>Trung tâm bảo hành chính hãng</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Dịch vụ và thông tin khác</h3>
+            <ul>
+                <li>Khách hàng doanh nghiệp (B2B)</li>
+                <li>Ưu đãi thanh toán</li>
+                <li>Quy chế hoạt động</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Kết nối với chúng tôi</h3>
+            <div class="social-icons">
+                <img src="https://img.icons8.com/?size=96&id=118497&format=png" alt="Facebook">
+                <img src="https://img.icons8.com/?size=96&id=32323&format=png" alt="Instagram">
+                <img src="https://img.icons8.com/?size=96&id=fdfLpA6fsXN2&format=png" alt="TikTok">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

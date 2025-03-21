@@ -1,0 +1,39 @@
+﻿@model Cửu_hàng_thiết_bị_điện_tử.Models.ĐT
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center text-primary mb-4">Create Product</h1>
+
+<div class="card shadow-lg p-4">
+    <h4 class="text-secondary">Product Information</h4>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form asp-action="Create" class="needs-validation" novalidate>
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                @foreach (var prop in new[] { "ProductName", "ManufactureDate", "Category", "Brand", "Price", "Stock", "Description" })
+                {
+                    <div class="form-group mb-3">
+                        <label asp-for="@prop" class="form-label fw-bold"></label>
+                        <input asp-for="@prop" class="form-control border-primary shadow-sm" />
+                        <span asp-validation-for="@prop" class="text-danger"></span>
+                    </div>
+                }
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

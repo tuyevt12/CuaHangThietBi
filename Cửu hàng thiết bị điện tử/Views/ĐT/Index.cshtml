@@ -1,0 +1,160 @@
+﻿@model Cửu_hàng_thiết_bị_điện_tử.Models.DeviceCategoryViewModel
+@{
+    ViewData["Title"] = "Danh sách Thiết Bị Điện Tử";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellphoneS - Cửa Hàng Thiết Bị Điện Tử</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #d70018;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .search-bar input {
+            width: 400px;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart {
+            background: orange;
+            padding: 10px 15px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            .cart:hover {
+                background: #ff9500;
+            }
+
+        .nav-bar {
+            background: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 60px;
+            z-index: 999;
+        }
+
+            .nav-bar ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+            }
+
+                .nav-bar ul li {
+                    margin: 0 15px;
+                    position: relative;
+                }
+
+                    .nav-bar ul li a {
+                        text-decoration: none;
+                        font-weight: bold;
+                        color: black;
+                        transition: color 0.3s, transform 0.2s;
+                        padding: 8px 15px;
+                        border-radius: 10px;
+                    }
+
+                        .nav-bar ul li a:hover {
+                            color: #d70018;
+                            background: rgba(215, 0, 24, 0.1);
+                            transform: scale(1.1);
+                        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:100:100/q:90/plain/https://cellphones.com.vn/media/wysiwyg/HI.gif" alt="CellphoneS"><h3>CELLPHONES</h3></div>
+        <div class="search-bar">
+            <input type="text" placeholder="Bạn cần tìm gì?">
+        </div>
+        <div class="cart">Giỏ Hàng</div>
+    </header>
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="https://localhost:7058/">Trang Chủ</a></li>
+            <li><a href="https://localhost:7058/Home/Details">Sản Phẩm</a></li>
+            <li><a href="https://localhost:7058/%C4%90T">Giỏ Hàng</a></li>
+            <li><a href="#contact">Liên Hệ</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
+<h1 style="text-align: center; color: #d70018; margin: 20px 0; font-size: 2.5rem;">Danh sách Thiết Bị Điện Tử</h1>
+<div style="text-align: right; margin-bottom: 20px;">
+    <a asp-action="Create" style="background: #d70018; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">+ Thêm Sản Phẩm</a>
+</div>
+
+<form asp-controller="ElectronicDevices" asp-action="Index" method="get" style="display: flex; align-items: center; gap: 10px; justify-content: center; margin-bottom: 30px;">
+    <select asp-for="SelectedCategory" asp-items="Model.Categories" style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; min-width: 200px;">
+        <option value="">Tất cả danh mục</option>
+    </select>
+    <input type="text" name="SearchString" placeholder="Nhập tên sản phẩm..." style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; min-width: 300px;" />
+    <input type="submit" value="Lọc" style="background: #d70018; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;" />
+</form>
+
+<table style="width: 100%; border-collapse: collapse; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden; text-align: center;">
+    <thead style="background: #d70018; color: white;">
+        <tr>
+            <th style="padding: 15px;">@Html.DisplayNameFor(model => model.Devices[0].ProductName)</th>
+            <th style="padding: 15px;">@Html.DisplayNameFor(model => model.Devices[0].ManufactureDate)</th>
+            <th style="padding: 15px;">@Html.DisplayNameFor(model => model.Devices[0].Category)</th>
+            <th style="padding: 15px;">@Html.DisplayNameFor(model => model.Devices[0].Price)</th>
+            <th style="padding: 15px;">Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Devices)
+        {
+            <tr style="border-bottom: 1px solid #eee; transition: background 0.2s;">
+                <td style="padding: 15px;">@Html.DisplayFor(modelItem => item.ProductName)</td>
+                <td style="padding: 15px;">@Html.DisplayFor(modelItem => item.ManufactureDate)</td>
+                <td style="padding: 15px;">@Html.DisplayFor(modelItem => item.Category)</td>
+                <td style="padding: 15px; color: #d70018; font-weight: bold;">@Html.DisplayFor(modelItem => item.Price) đ</td>
+                <td style="padding: 15px; display: flex; justify-content: center; gap: 10px;">
+                    <a asp-action="Edit" asp-route-id="@item.Id" style="background: #ffc107; color: black; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" style="background: #17a2b8; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">Chi tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" style="background: #dc3545; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
